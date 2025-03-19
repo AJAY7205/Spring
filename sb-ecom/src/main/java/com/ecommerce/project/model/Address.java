@@ -49,8 +49,9 @@ public class Address {
     private String pincode;
 
     @ToString.Exclude
-    @ManyToMany(mappedBy = "addresses")
-    private List<User> user = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Address(Long addressId, String street, String buildingName,
                    String city, String state, String country, String pincode) {
